@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+const defaultWorkDB = require('./defaultWorkDB.json');
 
 const app = express();
 
@@ -20,13 +21,20 @@ const Work = mongoose.model('Work', workSchema);
 
 app.get('/', function(req, res) {
     Work.find({}, function(err, works) {
+        console.log(works)
         if (works.length === 0) {
-
+            Work.insertMany(defaultWorkDB, function(err, works) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log("Add default work items")
+                }
+            })
         } else {
-
+            res.render('index', { works: works })
         }
     })
-    res.render("index")
+
 })
 
 
