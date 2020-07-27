@@ -2,15 +2,17 @@
     <div class="container-fluid">
         <h3 class="work-title title">Work</h3>
         <div class="container">
-            <div class="card-group">
+            <div class="card-group row">
                 <% works.forEach(work => {%>
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= work.title %>
-                            </h5>
-                            <a href=<%=work.link %> class="btn btn-primary" target="_blank">View more</a>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= work.title %>
+                                </h5>
+                                <a href=<%=work.link %> class="btn btn-primary" target="_blank">View more</a>
+                            </div>
                         </div>
                     </div>
                     <% });  %>

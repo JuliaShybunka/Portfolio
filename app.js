@@ -27,7 +27,8 @@ app.get('/', function(req, res) {
                 if (err) {
                     console.log(err)
                 } else {
-                    console.log("Add default work items")
+                    console.log("Add default work items");
+                    res.redirect('/')
                 }
             })
         } else {
