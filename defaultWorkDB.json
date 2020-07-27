@@ -1,14 +1,44 @@
 [{
-    "image": "Image",
-    "title": "Law Firm",
-    "link": "https://juliashybunka.github.io/Law-Firm-Attorney-Website-Template/"
-}, {
-    "image": "Image",
-    "title": "Law Firm",
-    "link": "https://juliashybunka.github.io/Law-Firm-Attorney-Website-Template/"
+        "image": "Image",
+        "title": "Todo list project",
+        "link": "https://glacial-harbor-77558.herokuapp.com/"
+    }, {
+        "image": "Image",
+        "title": "Sign up to newsletter!",
+        "link": "https://tranquil-headland-22993.herokuapp.com/"
+    }, {
+        "image": "Image",
+        "title": "Insure landing page",
+        "link": "https://juliashybunka.github.io/insure-landing-page-master/"
+    }, {
+        "image": "Image",
+        "title": "Project tracking",
+        "link": "https://juliashybunka.github.io/project-tracking-intro-component-master/"
+    }, {
+        "image": "Image",
+        "title": "Pricing component with toggle",
+        "link": "https://juliashybunka.github.io/pricing-component-with-toggle-master/"
+    }, {
+        "image": "Image",
+        "title": "Lambda restaurant landing page",
+        "link": "https://juliashybunka.github.io/Lambda_restaurant_landing_page/"
+    }, {
+        "image": "Image",
+        "title": "Axit",
+        "link": "https://juliashybunka.github.io/Axit/"
+    },
+    {
+        "image": "Image",
+        "title": "Corporate page",
+        "link": "https://juliashybunka.github.io/Corporate-page/"
+    }, {
+        "image": "Image",
+        "title": "Law Firm",
+        "link": "https://juliashybunka.github.io/Law-Firm-Attorney-Website-Template/"
 
-}, {
-    "image": "Image",
-    "title": "Law Firm",
-    "link": "https://juliashybunka.github.io/Law-Firm-Attorney-Website-Template/"
-}]
+    }, {
+        "image": "Image",
+        "title": "Rogue Chefs",
+        "link": "https://juliashybunka.github.io/Rogue-Chefs/"
+    }
+]
