@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
-var multer = require('multer');
+const multer = require('multer');
 const defaultWorkDB = require("./defaultWorkDB.json");
+const fs = require('fs');
+const path = require('path');
+
 
 const app = express();
 
@@ -14,12 +17,18 @@ mongoose.connect("mongodb://localhost:27017/portfolioWorkDB", {
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(multer({
-//     dest: ‘. / uploads / ’,
-//     rename: function(fieldname, filename) {
-//         return filename;
-//     },
-// }));
+app.use(bodyParser.json());
+
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+});
+
+let upload = multer({ storage: storage });
 
 const workSchema = new mongoose.Schema({
     image: {
@@ -29,7 +38,7 @@ const workSchema = new mongoose.Schema({
     title: String,
     link: String,
 });
-const Work = mongoose.model("Work", workSchema);
+const Work = new mongoose.model("Work", workSchema);
 
 app.get("/", function(req, res) {
     Work.find({}, function(err, works) {
@@ -52,11 +61,14 @@ app.get('/addWork', function(req, res) {
     res.render('addWork');
 });
 
-app.post('/', function(req, res) {
+app.post('/', upload.single('image'), function(req, res) {
     console.log(req.body.title);
     console.log(req.body.image);
     let newWork = {
-        image: req.body.image,
+        image: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        },
         title: req.body.title,
         link: req.body.link
     };
