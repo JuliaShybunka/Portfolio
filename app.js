@@ -52,6 +52,26 @@ app.get('/addWork', function(req, res) {
     res.render('addWork');
 });
 
+app.post('/', function(req, res) {
+    console.log(req.body.title);
+    console.log(req.body.image);
+    let newWork = {
+        image: req.body.image,
+        title: req.body.title,
+        link: req.body.link
+    };
+
+    Work.insertMany(newWork, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('new work add succesfully');
+        }
+    });
+
+    res.render('addWork');
+});
+
 // app.post(‘/api/photo’, function(req, res) {
 //     var newItem = new Item();
 //     newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
