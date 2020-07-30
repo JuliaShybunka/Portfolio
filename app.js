@@ -58,9 +58,9 @@ app.get("/", function(req, res) {
     });
 });
 
-app.get('/addWork', function(req, res) {
-    res.render('addWork');
-});
+// app.get('/addWork', function(req, res) {
+//     res.render('addWork');
+// });
 
 app.post('/', upload.single('image'), function(req, res) {
     console.log(req.body.title);
@@ -87,7 +87,18 @@ app.post('/', upload.single('image'), function(req, res) {
 
 app.get('/login', function(req, res) {
     res.render('login');
-})
+});
+
+app.post('/login', function(req, res) {
+    let user = req.body.email;
+    let password = req.body.password;
+    if (user === process.env.LOGIN_USER && password === process.env.LOGIN_PASS) {
+        res.render("addWork");
+    } else {
+        res.send('You not an admin');
+    }
+
+});
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000");
