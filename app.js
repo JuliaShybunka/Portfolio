@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -42,18 +43,18 @@ const Work = new mongoose.model("Work", workSchema);
 
 app.get("/", function(req, res) {
     Work.find({}, function(err, works) {
-        if (works.length === 0) {
-            Work.insertMany(defaultWorkDB, function(err, works) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log("Add default work items");
-                    res.redirect("/");
-                }
-            });
-        } else {
-            res.render("index", { works: works });
-        }
+        // if (works.length === 0) {
+        //     Work.insertMany(defaultWorkDB, function(err, works) {
+        //         if (err) {
+        //             console.log(err);
+        //         } else {
+        //             console.log("Add default work items");
+        //             res.redirect("/");
+        //         }
+        //     });
+        // } else {
+        res.render("index", { works: works });
+        // }
     });
 });
 
@@ -84,12 +85,9 @@ app.post('/', upload.single('image'), function(req, res) {
     res.render('addWork');
 });
 
-// app.post(‘/api/photo’, function(req, res) {
-//     var newItem = new Item();
-//     newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
-//     newItem.img.contentType = ‘image / png’;
-//     newItem.save();
-// });
+app.get('/login', function(req, res) {
+    res.render('login');
+})
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000");
