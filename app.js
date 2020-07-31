@@ -93,11 +93,30 @@ app.post('/login', function(req, res) {
     let user = req.body.email;
     let password = req.body.password;
     if (user === process.env.LOGIN_USER && password === process.env.LOGIN_PASS) {
-        res.render("addWork");
+        res.render("adminPage");
     } else {
-        res.send('You not an admin');
+        res.send('You do not have Administrator access');
     }
 
+});
+
+app.post('/adminPage', function(req, res) {
+    let name = req.body.exampleRadios;
+    if (name === 'createWork') {
+        res.render('addWork');
+    } else if (name === 'updateWork') {
+        Work.find({}, function(err, works) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('updateWork', { works: works });
+            }
+        });
+    }
+});
+
+app.post('/delete', function(req, res) {
+    console.log(req.body);
 });
 
 app.listen(3000, function() {

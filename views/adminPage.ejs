@@ -1,0 +1,25 @@
+<%- include('topPage'); -%>
+    <form action="/adminPage" method="POST">
+        <div class="container text-center">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="createWork">
+                <label class="form-check-label" for="exampleRadios1">
+                  Create Work Card
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="updateWork">
+                <label class="form-check-label" for="exampleRadios2">
+                  Update / Delete Work Card
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="deleteWork">
+                <label class="form-check-label" for="exampleRadios3">
+                
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+    </form>
+    <%- include('bottomPage'); -%>
