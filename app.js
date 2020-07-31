@@ -116,7 +116,16 @@ app.post('/adminPage', function(req, res) {
 });
 
 app.post('/delete', function(req, res) {
-    console.log(req.body);
+    let workId = req.body.deleteWork;
+
+    Work.findByIdAndDelete(workId, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Successfully deleted");
+            res.redirect('/');
+        }
+    });
 });
 
 app.listen(3000, function() {

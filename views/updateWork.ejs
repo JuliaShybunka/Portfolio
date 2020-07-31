@@ -10,7 +10,8 @@
                             </h5>
                             <a href=<%=work.link %> class="btn btn-primary" target="_blank">View more</a>
                             <form action="/delete" method="POST">
-                                <button type="submit" name="<% work._id %> ">Delete</button>
+                                <input type="hidden" name="deleteWork" value=<%=work._id %>>
+                                <button type="submit">Delete</button>
                             </form>
                         </div>
                     </div>
