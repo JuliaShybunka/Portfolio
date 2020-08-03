@@ -124,19 +124,42 @@ app.post('/adminPage', function(req, res) {
         });
     } else if (name === 'createSkill') {
         res.render('addSkill');
+    } else if (name === 'updateSkill') {
+        Skill.find({}, function(err, skills) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('updateSkill', { skills: skills });
+            }
+        });
     }
 });
 
 app.post('/delete', function(req, res) {
     let workId = req.body.deleteWork;
-    Work.findByIdAndDelete(workId, function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Successfully deleted");
-            res.redirect('/');
-        }
-    });
+    let skillId = req.body.deleteSkill;
+
+    let skillBtn = req.body.deleteSkillBtn;
+
+    if (skillBtn === 'deleteSkillBtn') {
+        Skill.findByIdAndDelete(skillId, function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Successfully deleted");
+                res.redirect('/');
+            }
+        });
+    } else {
+        Work.findByIdAndDelete(workId, function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Successfully deleted");
+                res.redirect('/');
+            }
+        });
+    }
 });
 
 app.post('/update', function(req, res) {
