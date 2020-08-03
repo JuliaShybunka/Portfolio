@@ -1,0 +1,15 @@
+<%- include('topPage'); -%>
+    <div class="container">
+        <form action="/addSkill" method="POST">
+            <div class="form-group">
+                <label for="title">Skill title</label>
+                <input type="text" class="form-control" id="title" name="title" value="">
+            </div>
+            <div class="form-group">
+                <label for="circleNumber">Number of circles</label>
+                <input type="text" class="form-control" id="circleNumber" name="circleNumber" />
+            </div>
+            <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+    </div>
+    <%- include('bottomPage'); -%>

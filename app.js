@@ -42,10 +42,20 @@ const workSchema = new mongoose.Schema({
 });
 const Work = new mongoose.model("Work", workSchema);
 
+const skillSchema = new mongoose.Schema({
+    title: String,
+    number: Number
+});
+
+const Skill = new mongoose.model("Skill", skillSchema)
+
 app.get("/", function(req, res) {
     Work.find({}, function(err, works) {
-        res.render("index", { works: works });
+        Skill.find({}, function(err, skills) {
+            res.render("index", { works: works, skills: skills });
+        });
     });
+
 });
 
 app.post('/', upload.single('image'), function(req, res) {
@@ -112,6 +122,8 @@ app.post('/adminPage', function(req, res) {
                 res.render('updateWork', { works: works });
             }
         });
+    } else if (name === 'createSkill') {
+        res.render('addSkill');
     }
 });
 
@@ -136,6 +148,29 @@ app.post('/update', function(req, res) {
             res.render('addWork', { work: work });
         }
     });
+});
+
+app.post('/addSkill', function(req, res) {
+    let newSkill = {
+        title: req.body.title,
+        number: req.body.circleNumber
+    };
+
+    Skill.find({}, function(err, skills) {
+        if (err) {
+            console.log(err);
+        } else {
+            Skill.insertMany(newSkill, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('new skill add succesfully');
+                }
+            });
+            res.redirect('/')
+        }
+    });
+
 });
 
 app.listen(3000, function() {
