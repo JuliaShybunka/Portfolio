@@ -5,7 +5,8 @@
             <div class="card-group row">
                 <% works.forEach(work => {%>
                     <div class="col-md-3">
-                        <div class="card" <img src="data:image/<%=work.image.contentType%>;base64,<%=work.image.data.toString('base64')%>" class="card-img-top" alt="...">
+                        <div class="card">
+                            <img src="data:image/<%=work.image.contentType%>;base64,<%=work.image.data.toString('base64')%>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= work.title %>

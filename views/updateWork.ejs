@@ -13,6 +13,10 @@
                                 <input type="hidden" name="deleteWork" value=<%=work._id %>>
                                 <button type="submit">Delete</button>
                             </form>
+                            <form action="/update" method="POST">
+                                <input type="hidden" name="updateWork" value=<%=work._id %>>
+                                <button type="submit">Update</button>
+                            </form>
                         </div>
                     </div>
                 </div>
