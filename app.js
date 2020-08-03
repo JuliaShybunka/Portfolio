@@ -164,13 +164,28 @@ app.post('/delete', function(req, res) {
 
 app.post('/update', function(req, res) {
     let workId = req.body.updateWork;
-    Work.findById(workId, function(err, work) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('addWork', { work: work });
-        }
-    });
+    let skillId = req.body.updateSkill;
+
+    let skillBtn = req.body.updateSkillBtn;
+
+    if (skillBtn === 'updateSkillBtn') {
+        Skill.findById(skillId, function(err, skill) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(skill);
+                res.render('addSkill', { skill: skill });
+            }
+        });
+    } else {
+        Work.findById(workId, function(err, work) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('addWork', { work: work });
+            }
+        });
+    }
 });
 
 app.post('/addSkill', function(req, res) {
@@ -179,18 +194,28 @@ app.post('/addSkill', function(req, res) {
         number: req.body.circleNumber
     };
 
-    Skill.find({}, function(err, skills) {
+    Skill.findById(req.body.updateSkill, function(err, skill) {
         if (err) {
             console.log(err);
         } else {
-            Skill.insertMany(newSkill, function(err) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('new skill add succesfully');
-                }
-            });
-            res.redirect('/')
+            if (skill === null) {
+                Skill.insertMany(newSkill, function(err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('new skill add succesfully');
+                    }
+                });
+            } else {
+                Skill.findByIdAndUpdate(skill._id, newSkill, function(err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Successfully updated");
+                    }
+                });
+            }
+            res.redirect('/');
         }
     });
 

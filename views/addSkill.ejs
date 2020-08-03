@@ -9,7 +9,10 @@
                 <label for="circleNumber">Number of circles</label>
                 <input type="text" class="form-control" id="circleNumber" name="circleNumber" />
             </div>
-            <button class="btn btn-primary" type="submit">Add</button>
+            <% if(skill._id){ %>
+                <input type="hidden" name="updateSkill" value=<%=skill._id %>>
+                <% } %>
+                    <button class="btn btn-primary" type="submit">Add</button>
         </form>
     </div>
     <%- include('bottomPage'); -%>
