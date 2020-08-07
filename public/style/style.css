@@ -38,6 +38,21 @@ body {
     opacity: 1;
 }
 
+.title {
+    max-width: 18%;
+    text-transform: uppercase;
+    margin: 10% 0 3%;
+    border-bottom: 5px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+    transition: 2s;
+}
+
+.title:hover {
+    max-width: 5%;
+}
+
 
 /* HEADER */
 
@@ -106,10 +121,36 @@ body {
     left: 0px;
 }
 
-.banner-title {}
-
 .banner-subtitle {
     text-transform: uppercase;
     opacity: 0.8;
     margin-bottom: 50px;
+}
+
+
+/* SKILLS */
+
+.skills-item {
+    text-align: center;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+    transition: 0.3s;
+}
+
+.skills-item:hover {
+    transform: scale(1.1);
+}
+
+.skills-item__title {
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.skills-item__list {
+    list-style: none;
+    padding: 0;
 }
