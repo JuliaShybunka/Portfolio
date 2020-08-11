@@ -11,7 +11,7 @@ const path = require('path');
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/portfolioWorkDB", {
+mongoose.connect(`mongodb+srv://Julia:${process.env.DB_PASS}@cluster0-psqgy.mongodb.net/portfolioWorkDB?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -47,7 +47,7 @@ const skillSchema = new mongoose.Schema({
     number: Number
 });
 
-const Skill = new mongoose.model("Skill", skillSchema)
+const Skill = new mongoose.model("Skill", skillSchema);
 
 app.get("/", function(req, res) {
     Work.find({}, function(err, works) {
