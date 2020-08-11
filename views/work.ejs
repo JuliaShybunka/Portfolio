@@ -1,17 +1,17 @@
 <section class="work" id='work'>
     <div class="container-fluid">
-        <h3 class="work-title title">Work</h3>
+        <h3 class="work-title title work-title">Projects</h3>
         <div class="container">
             <div class="card-group row">
-                <% works.forEach(work => {%>
-                    <div class="col-md-3">
+                <% works.slice().reverse().forEach(work => {%>
+                    <div class="col-md-4  work-card">
                         <div class="card">
                             <img src="data:image/<%=work.image.contentType%>;base64,<%=work.image.data.toString('base64')%>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">
+                            <div class="card-body work-card__inner">
+                                <h5 class="card-title card-body work-card__title">
                                     <%= work.title %>
                                 </h5>
-                                <a href=<%=work.link %> class="btn btn-primary" target="_blank">View more</a>
+                                <a href=<%=work.link %> class="btn btn-primary card-body work-card__link btn-default" target="_blank">View more</a>
                             </div>
                         </div>
                     </div>
