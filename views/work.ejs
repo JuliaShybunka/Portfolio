@@ -4,9 +4,10 @@
         <div class="container">
             <div class="card-group row">
                 <% works.slice().reverse().forEach(work => {%>
-                    <div class="col-md-4  work-card">
-                        <div class="card">
-                            <img src="data:image/<%=work.image.contentType%>;base64,<%=work.image.data.toString('base64')%>" class="card-img-top" alt="...">
+                    <div class="col-lg-4 d-flex align-items-stretch work-card ">
+                        <div class="card ">
+                            <img src="data:image/<%=work.image.contentType%>;base64,
+                        <%=work.image.data.toString('base64')%>" class="img-fluid" alt="...">
                             <div class="card-body work-card__inner">
                                 <h5 class="card-title card-body work-card__title">
                                     <%= work.title %>

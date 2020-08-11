@@ -170,6 +170,7 @@ body {
 .work-card {
     margin-bottom: 10px;
     position: relative;
+    max-height: 200px;
 }
 
 .work-card__inner {
@@ -192,4 +193,27 @@ body {
 
 .work-card:hover .work-card__inner {
     opacity: 1;
+}
+
+
+/* FOOTER */
+
+.footer {
+    background-color: #3eadcf;
+}
+
+.footer-content__image {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+
+.footer-content__message {
+    width: 300px;
+    height: 300px;
+    transform: scaleX(-1);
+}
+
+.footer-content {
+    display: flex;
 }
