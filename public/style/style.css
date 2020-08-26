@@ -61,6 +61,11 @@ body {
     max-width: 5%;
 }
 
+.skills,
+.work {
+    padding: 5% 0 3%;
+}
+
 
 /* HEADER */
 
@@ -143,10 +148,6 @@ body {
 
 /* SKILLS */
 
-.skills {
-    margin: 10% 0 3%;
-}
-
 .skills-item {
     text-align: center;
     border: 3px solid;
@@ -174,10 +175,6 @@ body {
 
 
 /* WORK */
-
-.work {
-    margin: 10% 0 3%;
-}
 
 .work-card {
     margin-bottom: 10px;
@@ -220,8 +217,8 @@ body {
 }
 
 .footer-content__image {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 100%;
     border: 5px solid #fff;
 }
