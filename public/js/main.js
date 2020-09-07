@@ -14,14 +14,6 @@ $(document).ready(function() {
         $('.banner-inner').css('background-image', 'linear-gradient(315deg, #36096d 0%, #37d5d6 74%)');
     });
 
-    // function burger() {
-    //     var burger = document.getElementById('burger');
-    //     var links = document.getElementById('links');
-    //     var quit = document.getElementById('quit');
-    //     burger.style.padding = '16px 16px 200vw 200vw';
-    //     links.style.display = 'flex';
-    //     quit.style.display = 'inline';
-    // }
 
     $('#burger').click(function(e) {
         e.preventDefault();
@@ -37,18 +29,6 @@ $(document).ready(function() {
         $(".header-nav").css("display", 'none');
         $("#quit").css("display", 'none');
     });
-
-    // function quit() {
-    //     // var burger = document.getElementById('burger');
-    //     // var links = document.getElementById('links');
-    //     // var quit = document.getElementById('quit');
-    //     // burger.style.padding = '16px 16px 32px 32px';
-    //     // links.style.display = 'none';
-    //     // quit.style.display = 'none';
-    //     $("#burger").css("padding", '16px 16px 32px 32px');
-    //     $(".header-nav").css("display", 'none');
-    //     $("#quit").css("display", 'none');
-    // }
 });
 
 // background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
