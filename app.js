@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -11,7 +11,7 @@ const path = require('path');
 
 const app = express();
 
-mongoose.connect(`mongodb+srv://Julia:${process.env.DB_PASS}@cluster0-psqgy.mongodb.net/portfolioWorkDB?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://Julia:$Ueg5697vkDvVJMG@cluster0-psqgy.mongodb.net/portfolioWorkDB`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -131,9 +131,6 @@ app.post('/delete', function(req, res) {
 app.post('/update', function(req, res) {
     let workId = req.body.updateWork;
 
-
-
-
     Work.findById(workId, function(err, work) {
         if (err) {
             console.log(err);
@@ -153,5 +150,5 @@ if (port == null || port == "") {
 
 
 app.listen(port, function() {
-    console.log('Server is running on port 3000');
+    console.log(`Server is running on port ${port} `);
 });
