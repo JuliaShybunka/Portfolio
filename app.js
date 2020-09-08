@@ -42,18 +42,9 @@ const workSchema = new mongoose.Schema({
 });
 const Work = new mongoose.model("Work", workSchema);
 
-const skillSchema = new mongoose.Schema({
-    title: String,
-    number: Number
-});
-
-const Skill = new mongoose.model("Skill", skillSchema);
-
 app.get("/", function(req, res) {
     Work.find({}, function(err, works) {
-        Skill.find({}, function(err, skills) {
-            res.render("index", { works: works, skills: skills });
-        });
+        res.render("index", { works: works });
     });
 
 });
@@ -122,104 +113,37 @@ app.post('/adminPage', function(req, res) {
                 res.render('updateWork', { works: works });
             }
         });
-    } else if (name === 'createSkill') {
-        res.render('addSkill');
-    } else if (name === 'updateSkill') {
-        Skill.find({}, function(err, skills) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render('updateSkill', { skills: skills });
-            }
-        });
     }
 });
 
 app.post('/delete', function(req, res) {
     let workId = req.body.deleteWork;
-    let skillId = req.body.deleteSkill;
-
-    let skillBtn = req.body.deleteSkillBtn;
-
-    if (skillBtn === 'deleteSkillBtn') {
-        Skill.findByIdAndDelete(skillId, function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("Successfully deleted");
-                res.redirect('/');
-            }
-        });
-    } else {
-        Work.findByIdAndDelete(workId, function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("Successfully deleted");
-                res.redirect('/');
-            }
-        });
-    }
+    Work.findByIdAndDelete(workId, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Successfully deleted");
+            res.redirect('/');
+        }
+    });
 });
 
 app.post('/update', function(req, res) {
     let workId = req.body.updateWork;
-    let skillId = req.body.updateSkill;
 
-    let skillBtn = req.body.updateSkillBtn;
 
-    if (skillBtn === 'updateSkillBtn') {
-        Skill.findById(skillId, function(err, skill) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(skill);
-                res.render('addSkill', { skill: skill });
-            }
-        });
-    } else {
-        Work.findById(workId, function(err, work) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render('addWork', { work: work });
-            }
-        });
-    }
-});
 
-app.post('/addSkill', function(req, res) {
-    let newSkill = {
-        title: req.body.title,
-        number: req.body.circleNumber
-    };
 
-    Skill.findById(req.body.updateSkill, function(err, skill) {
+    Work.findById(workId, function(err, work) {
         if (err) {
             console.log(err);
         } else {
-            if (skill === null) {
-                Skill.insertMany(newSkill, function(err) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log('new skill add succesfully');
-                    }
-                });
-            } else {
-                Skill.findByIdAndUpdate(skill._id, newSkill, function(err) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log("Successfully updated");
-                    }
-                });
-            }
-            res.redirect('/');
+            res.render('addWork', { work: work });
         }
     });
 
 });
+
 
 let port = process.env.PORT;
 if (port == null || port == "") {
@@ -229,5 +153,5 @@ if (port == null || port == "") {
 
 
 app.listen(port, function() {
-    console.log('Server is running on port 3000')
-})
+    console.log('Server is running on port 3000');
+});
