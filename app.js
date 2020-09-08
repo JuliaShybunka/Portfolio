@@ -11,7 +11,7 @@ const path = require('path');
 
 const app = express();
 
-mongoose.connect(`mongodb+srv://Julia:$Ueg5697vkDvVJMG@cluster0-psqgy.mongodb.net/portfolioWorkDB`, {
+mongoose.connect(`mongodb+srv://Julia:Ueg5697vkDvVJMG@cluster0-psqgy.mongodb.net/portfolioWorkDB`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
