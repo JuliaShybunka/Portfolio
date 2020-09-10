@@ -4,12 +4,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
 const multer = require('multer');
-const defaultWorkDB = require("./defaultWorkDB.json");
+const compression = require('compression');
 const fs = require('fs');
 const path = require('path');
 
 
 const app = express();
+
+app.use(compression());
 
 mongoose.connect(`mongodb+srv://Julia:Ueg5697vkDvVJMG@cluster0-psqgy.mongodb.net/portfolioWorkDB`, {
     useNewUrlParser: true,
