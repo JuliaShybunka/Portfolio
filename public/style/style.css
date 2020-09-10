@@ -261,6 +261,7 @@ body {
     display: block;
     border: 5px solid #fff;
     width: 100%;
+    color: #fff !important;
 }
 
 .footer-content__items {
